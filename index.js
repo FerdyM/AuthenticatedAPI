@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 dotenv.config();
 
 const authRoute = require('./routes/auth')
+const postRoute = require('./routes/posts')
 
 mongoose.connect(
     process.env.DB_HOST, 
@@ -16,5 +17,5 @@ mongoose.connect(
 app.use(express.json())
 
 app.use('/api/user', authRoute)
-
+app.use('/api/posts', postRoute)
 app.listen(3000, () => console.log("up and running"))
